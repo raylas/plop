@@ -1,0 +1,28 @@
+[package]
+name = "plop-cli"
+version = "0.1.0"
+description = "Easily upload and share files via S3"
+authors = ["Raymond Douglas <r@rymnd.org>"]
+license-file = "LICENSE"
+documentation = "https://github.com/raylas/plop"
+homepage = "https://github.com/raylas/plop"
+repository = "https://github.com/raylas/plop"
+edition = "2021"
+
+[[bin]]
+name = "plop"
+path = "src/main.rs"
+
+[profile.release]
+incremental = false # Disable incremental compilation
+opt-level = 'z'     # Optimize for size
+lto = true          # Enable link-tim optimization
+codegen-units = 1   # Reduce number of codegen units to increase optimizations
+panic = 'abort'     # Abort on panic
+
+[dependencies]
+structopt = "0.3"
+clipboard = "0.5"
+aws-config = "0.46.0"
+aws-sdk-s3 = "0.16.0"
+tokio = { version = "1", features = ["full"] }
