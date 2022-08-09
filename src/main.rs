@@ -2,9 +2,9 @@ use std::error::Error;
 use std::path::Path;
 use std::time::Duration;
 use structopt::StructOpt;
+use aws_config::meta::region::RegionProviderChain;
 use aws_sdk_s3::types::ByteStream;
 use aws_sdk_s3::presigning::config::PresigningConfig;
-use aws_config::meta::region::RegionProviderChain;
 use aws_sdk_s3::{Client, Region};
 
 /// Upload and share files via S3 presigned URIs
